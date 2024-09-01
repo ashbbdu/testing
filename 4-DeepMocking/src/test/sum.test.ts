@@ -2,9 +2,7 @@ import {describe, expect, test, it , vi} from 'vitest';
 import request from "supertest";
 import { app } from "../index"
 
-vi.mock("../db" ,() => ({
-    prismaClient : {sum : {create : vi.fn()}  ,  product : {create : vi.fn()}}
-}))
+vi.mock("../db")
 
 
 

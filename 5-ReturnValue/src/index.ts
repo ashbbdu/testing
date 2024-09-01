@@ -21,15 +21,16 @@ app.post("/sum", async (req, res) => {
     }
 
     const answer = parsedResponse.data.a + parsedResponse.data.b;
-    await prismaClient.sum.create({
+   const data = await prismaClient.sum.create({
         data : {
             a : parsedResponse.data.a,
             b : parsedResponse.data.b,
-            result :  answer
+            result : answer
         }
     })
     res.json({
-        answer
+        answer,
+        id : data.id
     })
 });
 
@@ -62,7 +63,7 @@ app.post("/product", async (req, res) => {
     }
 
     const answer = parsedResponse.data.a * parsedResponse.data.b;
-    await prismaClient.product.create({
+  const data =  await prismaClient.product.create({
         data : {
             a : parsedResponse.data.a,
             b : parsedResponse.data.b,
@@ -70,6 +71,7 @@ app.post("/product", async (req, res) => {
         }
     })
     res.json({
-        answer
+        answer,
+        id : data.id
     })
 });
